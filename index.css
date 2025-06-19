@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 8px;
+}
+
+.select {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  color: #666;
+}
+
+.select.disabled {
+  color: #ccc;
+}
+
+.select .title {
+  min-width: 150px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select.disabled .title {
+  cursor: not-allowed;
+}
+
+.title .iconfont {
+  font-size: 10px;
+  transition: 0.25s;
+}
+
+.select.expand .title .iconfont {
+  transform: rotate(180deg);
+}
+
+.select .options {
+  list-style-type: none;
+  position: absolute;
+  top: 50px;
+  min-width: 100%;
+  max-height: 300px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  transform-origin: center -10px;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: 0.25s;
+  /* 此处的网格布局方式值得学习 */
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fit, 20px);
+  white-space: nowrap;
+  justify-items: left;
+  align-items: center;
+  row-gap: 6px;
+  column-gap: 26px;
+}
+
+.options::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-bottom: none;
+  transform: rotate(45deg);
+  left: 70px;
+  top: -6px;
+  background-color: #fff;
+}
+
+.select.expand .options {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.options li {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.options li.active {
+  background-color: #eec05a;
+}
